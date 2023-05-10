@@ -14,3 +14,8 @@ steps:
       - 'apply'
       - '-f'
       - 'deployment.yaml'
+options:
+  logging:
+    gcsLogOptions:
+      logName: 'node-server-build'
+      bucket: 'y-csv-bucket'
