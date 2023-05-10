@@ -57,7 +57,7 @@ app.get('/', async (req, res) => {
 
     // Construct the response HTML
     const html = `
-      <h1>Page loaded ${requestId} times. test1</h1>
+      <h1>Page loaded ${requestId} times. test2</h1>
       <h2>Last requests:</h2>
       <ul>
         ${lastRequests.map(request => `<li>${request.ip} - ${request.userAgent}</li>`).join('')}
