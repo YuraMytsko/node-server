@@ -7,9 +7,9 @@ const username = process.env.USER;
 const password = process.env.PASSWORD;
 const host = process.env.DB_HOST;
 
-console.log("User: " + username);
-console.log("Pass: " + password);
-console.log("Host: " + host);
+console.log("DB User: " + username);
+console.log("DB Pass: " + password);
+console.log("DB Host: " + host);
 
 const app = express();
 const sequelize = new Sequelize({
