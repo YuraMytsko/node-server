@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-server-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-server
+  template:
+    metadata:
+      labels:
+        app: node-server
+    spec:
+      containers:
+      - name: node-server
+        image: us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.5
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: 10.24.80.6
+        - name: USER
+          valueFrom:
+            secretKeyRef:
+              name: my-secrets
+              key: username
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secrets
+              key: password
+      - name: cloud-sql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:latest
+        command: ["/cloud_sql_proxy", "-instances=y-test-import-csv:us-central1:requests-db=tcp:5432", "-credential_file=/secrets/cloudsql/key.json"]
+        volumeMounts:
+          - name: cloud-sql-service-account
+            mountPath: /secrets/cloudsql
+            readOnly: true
+      volumes:
+        - name: cloud-sql-service-account
+          secret:
+            secretName: cloudsql-instance-credentials
