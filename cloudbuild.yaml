@@ -10,9 +10,12 @@ steps:
       - 'push'
       - 'us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.7'
   - name: 'gcr.io/cloud-builders/kubectl'
+    entrypoint: 'bash'
     args:
-      - 'apply'
-      - '-f'
-      - 'deployment.yaml'
+      - '-c'
+      - |
+        export CLOUDSDK_COMPUTE_REGION=us-central1
+        export CLOUDSDK_CONTAINER_CLUSTER=node-dev
+        kubectl apply -f deployment.yaml
 options:
   logging: CLOUD_LOGGING_ONLY
