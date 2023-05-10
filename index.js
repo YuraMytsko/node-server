@@ -7,7 +7,7 @@ const username = process.env.USER;
 const password = process.env.PASSWORD;
 const host = process.env.DB_HOST;
 
-console.log("DB User: " + username);
+console.log("DB User: " + username); 
 console.log("DB Pass: " + password);
 console.log("DB Host: " + host);
 
