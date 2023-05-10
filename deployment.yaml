@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-server
-        image: us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.7
+        image: us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.8
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
