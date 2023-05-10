@@ -3,12 +3,12 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.8'
+      - 'us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.9'
       - '.'
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.8'
+      - 'us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.9'
   - name: 'gcr.io/cloud-builders/kubectl'
     entrypoint: 'bash'
     args:
