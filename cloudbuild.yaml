@@ -16,6 +16,7 @@ steps:
       - |
         export CLOUDSDK_COMPUTE_REGION=us-central1
         export CLOUDSDK_CONTAINER_CLUSTER=node-dev
+        gcloud container clusters get-credentials node-dev --region=central1
         kubectl apply -f deployment.yaml
 options:
   logging: CLOUD_LOGGING_ONLY
