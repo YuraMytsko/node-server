@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-server-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: node-server
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-server
-        image: us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.11
+        image: us-central1-docker.pkg.dev/y-test-import-csv/node-repo/node-server:v0.0.12
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
